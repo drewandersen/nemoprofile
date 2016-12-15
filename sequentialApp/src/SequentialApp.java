@@ -9,6 +9,9 @@ public class SequentialApp {
 
 	public static void main (String[] args) {
 
+		Timer timer = new Timer();
+		timer.start();
+		
 		// parse CLIs (where should i put this? some kind of input class?)
 		String filename = args[0];
 		System.out.println("filename = " + args[0]);
@@ -28,9 +31,6 @@ public class SequentialApp {
 		}
 		probs.add(1.0);
 		probs.add(0.1);
-		
-		Timer timer = new Timer();
-		timer.start();
 		
 		// parse input graph
 		System.out.println("Parsing target graph...");
@@ -58,6 +58,7 @@ public class SequentialApp {
 		
 		// output the results
 		System.out.println(statisticalAnalysis);
+		System.out.println("Execution time: " + timer.getCurrentTime());
 	}
 
 	private static Graph parseInputGraph(String filename) {
@@ -70,5 +71,6 @@ public class SequentialApp {
 		}
 		return targetGraph;
 	}
+
 
 }
