@@ -58,7 +58,8 @@ public class SequentialApp {
 		
 		// output the results
 		System.out.println(statisticalAnalysis);
-		System.out.println("Execution time: " + timer.getCurrentTime());
+		System.out.println("Execution time: " + timer.getCurrentTime() + 
+						   " milliseconds");
 	}
 
 	private static Graph parseInputGraph(String filename) {
