@@ -8,7 +8,7 @@ Prerequisites
 -------------
 * A Linux operating environment.
 * Installation of the `nemolib` library, located at: 
-https://bitbucket.org/drewda81/nemolib.
+https://github.com/drewandersen/nemolib.
 * Each program may have additional requirements found in its README file.
 
 Contact
