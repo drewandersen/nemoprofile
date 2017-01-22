@@ -1,4 +1,5 @@
-import nemolib.*;
+import edu.uwb.nemolib.*;
+
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,12 +8,10 @@ import java.util.Set;
 
 public class SequentialApp {
 
+	private static final double P_THRESH = 0.1;
+
 	public static void main (String[] args) {
 
-		Timer timer = new Timer();
-		timer.start();
-		
-		// parse CLIs (where should i put this? some kind of input class?)
 		String filename = args[0];
 		System.out.println("filename = " + args[0]);
 		int motifSize = Integer.parseInt(args[1]);
@@ -34,7 +33,14 @@ public class SequentialApp {
 		
 		// parse input graph
 		System.out.println("Parsing target graph...");
-		Graph targetGraph = parseInputGraph(filename);
+		Graph targetGraph = null;
+		try {
+			targetGraph = GraphParser.parse(filename);
+		} catch (IOException e) {
+			System.err.println("Could not process " + filename);
+			System.err.println(e);
+			System.exit(-1);
+		}
 		
 		// analyze target graph
 		System.out.println("Analyzing target graph...");
@@ -53,25 +59,16 @@ public class SequentialApp {
 		System.out.println("Comparing target graph to random graphs...");
 		// compare target graph to random graphs
 		StatisticalAnalysis statisticalAnalysis =
-		        new StatisticalAnalysis(targetLabelRelFreqMap,
-		                randLabelRelFreqsMap, randGraphCount);
-		
+		        new StatisticalAnalysis(randLabelRelFreqsMap,
+										targetLabelRelFreqMap);
+
+		System.out.println("Constructing NemoProfile...");
+		SubgraphProfile np = NemoProfileBuilder.build(subgraphProfile, statisticalAnalysis, P_THRESH);
+
 		// output the results
 		System.out.println(statisticalAnalysis);
-		System.out.println("Execution time: " + timer.getCurrentTime() + 
-						   " milliseconds");
+		System.out.println(np);
+		//System.out.println("Execution time: " + timer.getCurrentTime() + 
+		//					 " milliseconds");
 	}
-
-	private static Graph parseInputGraph(String filename) {
-		Graph targetGraph = null;
-		try {
-		    targetGraph = new Graph(filename);
-		} catch (IOException e) {
-		    System.out.println("Unable to parse data file");
-		    System.exit(-1);
-		}
-		return targetGraph;
-	}
-
-
 }

@@ -5,13 +5,14 @@ Executes a sequential implementation of NemoProfile.
 Prerequisites
 -------------
 * A Linux operating environment.
-* Installation of the `nemolib` library, located at: 
-https://bitbucket.org/drewda81/nemolib.
 * Ability to compile and run Java 8 or higher
+* Copy of the [`nemolib` library](https://github.com/drewandersen/nemolib) 
+installed in the root directory of the application.
 
 Compile
 -------
-Use the included `compile.sh` script to compile the program.
+Use the included `compile.sh` script to compile the program. You may need 
+to adjust the classpath to match your version of the nemolib library.
 
 Execution
 ---------

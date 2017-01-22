@@ -1,7 +1,7 @@
-echo "Building program..." 1>&2
+echo "Building program..."
 if [ ! -d out ] ; then mkdir out; fi
 rm -f out/*.class
 
-javac -cp ~/lib/nemolib.jar -d out ./src/SequentialApp.java
+javac -cp ./nemolib-0.1-SNAPSHOT.jar -d out ./src/main/java/edu/uwb/nemoprofile/SequentialApp.java
 
-chmod +x labelg run.sh
+echo "Success! Use ./run.sh to execute."

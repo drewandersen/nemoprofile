@@ -12,4 +12,4 @@ motif_size=$2
 rand_graphs=$3
 
 # execute
-java -Xms1g -Xmx8g -cp ~/lib/nemolib.jar:out:. SequentialApp $data_file $motif_size $rand_graphs
+java -Xms1g -Xmx8g -cp ./nemolib-0.1-SNAPSHOT.jar:out:. SequentialApp $data_file $motif_size $rand_graphs
