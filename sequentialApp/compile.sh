@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
 echo "Building program..."
 if [ ! -d out ] ; then mkdir out; fi
 rm -f out/*.class
